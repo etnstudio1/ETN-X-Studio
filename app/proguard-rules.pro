@@ -1,0 +1,5 @@
+-keep class com.etnstudio.user.data.** { *; }
+-keepclassmembers class com.etnstudio.user.data.** { *; }
+-dontwarn okhttp3.**
+-dontwarn retrofit2.**
+-keep class kotlin.reflect.** { *; }

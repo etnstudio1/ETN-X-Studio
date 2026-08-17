@@ -18,15 +18,26 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # Yahan hum system Gradle install kar rahe hain
+      # ---------- YEH NAYA STEP HAI (Directory check) ----------
+      - name: Check Directory Structure
+        run: |
+          echo "Root directory:"
+          ls -la
+          echo "App directory:"
+          ls -la app/ || echo "app folder missing!"
+          echo "App src directory:"
+          ls -la app/src/ || echo "src folder missing!"
+          echo "Checking build.gradle.kts exists:"
+          ls -la app/build.gradle.kts || echo "build.gradle.kts MISSING in app/"
+      # ---------------------------------------------------------
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: '8.4'
 
-      # Ab hum ./gradlew ki jagah sirf "gradle" command use karenge
       - name: Build Debug APK
-        run: gradle assembleDebug
+        run: gradle assembleDebug --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

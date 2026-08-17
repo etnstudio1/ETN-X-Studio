@@ -3,7 +3,7 @@ name: Build Android APK
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  # Is se aap manually bhi start kar sakte hain
+  workflow_dispatch:
 
 jobs:
   build:
